@@ -131,9 +131,9 @@ Instaloader supports the following targets:
    .. versionadded:: 4.1
 
 - ``-story``
-   Replace **story** with the story's mediaid to download single story
-   (requires :option:`--login`). Must be preceded by ``--`` in
-   the argument list to not be mistaken as an option flag::
+   Replace **story** with the story's mediaid to download a single story.
+   This option only works with stories on public profiles (requires :option:`--login`).
+   Must be preceded by ``--`` in the argument list to not be mistaken as an option flag::
 
     instaloader --login=username -- -2832332684169568465
 

@@ -275,7 +275,7 @@ def main():
     g_targets.add_argument('_singlepost', nargs='*', metavar="-- -shortcode",
                            help="Download the post with the given shortcode")
     g_targets.add_argument('_singlestory', nargs='*', metavar="-- -mediaid",
-                           help="Download the story with the given mediaid. Requires --login.")
+                           help="Download the public story with the given mediaid. Requires --login.")
     g_targets.add_argument('_json', nargs='*', metavar="filename.json[.xz]",
                            help="Re-Download the given object.")
     g_targets.add_argument('_fromfile', nargs='*', metavar="+args.txt",
