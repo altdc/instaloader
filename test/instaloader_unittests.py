@@ -16,6 +16,7 @@ PUBLIC_PROFILE_WITH_IGTV = "natgeo"
 HASHTAG = "kitten"
 LOCATION = "362629379"
 OWN_USERNAME = "aandergr"
+OWN_STORY_MEDIAID = '2832332684169568465'
 NORMAL_MAX_COUNT = 2
 PAGING_MAX_COUNT = 15
 PRIVATE_PROFILE = "aandergr"
@@ -125,6 +126,13 @@ class TestInstaloaderLoggedIn(TestInstaloaderAnonymously):
     @unittest.skip('')
     def test_stories_download(self):
         self.L.download_stories()
+
+    @unittest.skip('')
+    def test_single_story_download(self):
+        self.L.download_storyitem(
+            instaloader.StoryItem.from_mediaid(self.L.context, int(OWN_STORY_MEDIAID)),
+            '-' + OWN_STORY_MEDIAID,
+        )
 
     @unittest.skip('')
     def test_private_profile_download(self):
