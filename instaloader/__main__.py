@@ -164,6 +164,8 @@ def _main(instaloader: Instaloader, targetlist: List[str],
                     instaloader.download_hashtag(hashtag=target[1:], max_count=max_count, fast_update=fast_update,
                                                  post_filter=post_filter,
                                                  profile_pic=download_profile_pic, posts=download_posts)
+                elif re.match(r"^-[0-9]+$", target):
+                    instaloader.download_storyitem(StoryItem.from_mediaid(instaloader.context, int(target[1:])), target)
                 elif re.match(r"^-[A-Za-z0-9-_]+$", target):
                     instaloader.download_post(Post.from_shortcode(instaloader.context, target[1:]), target)
                 elif re.match(r"^%[0-9]+$", target):
@@ -208,7 +210,7 @@ def _main(instaloader: Instaloader, targetlist: List[str],
                     target_type = {
                         '#': 'hashtag',
                         '%': 'location',
-                        '-': 'shortcode',
+                        '-': 'shortcode/mediaid',
                     }.get(target[0], 'username')
                     raise ProfileNotExistsException('Invalid {} {}'.format(target_type, target))
         if len(profiles) > 1:
@@ -272,6 +274,8 @@ def main():
                            help="Download the posts that you marked as saved. Requires --login.")
     g_targets.add_argument('_singlepost', nargs='*', metavar="-- -shortcode",
                            help="Download the post with the given shortcode")
+    g_targets.add_argument('_singlestory', nargs='*', metavar="-- -mediaid",
+                           help="Download the story with the given mediaid. Requires --login.")
     g_targets.add_argument('_json', nargs='*', metavar="filename.json[.xz]",
                            help="Re-Download the given object.")
     g_targets.add_argument('_fromfile', nargs='*', metavar="+args.txt",
