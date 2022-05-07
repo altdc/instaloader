@@ -13,6 +13,7 @@ PROFILE_WITH_HIGHLIGHTS = 325732271
 PUBLIC_PROFILE = "selenagomez"
 PUBLIC_PROFILE_ID = 460563723
 PUBLIC_PROFILE_WITH_IGTV = "natgeo"
+PUBLIC_STORY_MEDIAID = 2832332684169568465
 HASHTAG = "kitten"
 LOCATION = "362629379"
 OWN_USERNAME = "aandergr"
@@ -129,10 +130,7 @@ class TestInstaloaderLoggedIn(TestInstaloaderAnonymously):
 
     @unittest.skip('')
     def test_single_story_download(self):
-        self.L.download_storyitem(
-            instaloader.StoryItem.from_mediaid(self.L.context, int(OWN_STORY_MEDIAID)),
-            '-' + OWN_STORY_MEDIAID,
-        )
+        self.L.download_storyitem(instaloader.StoryItem.from_mediaid(self.L.context, PUBLIC_STORY_MEDIAID), '.')
 
     @unittest.skip('')
     def test_private_profile_download(self):
